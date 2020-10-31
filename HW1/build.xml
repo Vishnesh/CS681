@@ -17,7 +17,7 @@
 	</target>
 
 	<target depends="clean" name="cleanall" />
-	<target depends="clean, build-project, StockQuoteObservable" name="build" />
+	<target depends="clean, build-project, Test" name="build" />
 	<target depends="init" name="build-project">
 		<echo message="${ant.project.name}: ${ant.file}" />
 		<javac debug="true" debuglevel="${debuglevel}" destdir="bin"
@@ -27,8 +27,8 @@
 		</javac>
 	</target>
 
-	<target name="StockQuoteObservable">
-		<java classname="edu.umb.cs681.hw01.StockQuoteObservable" classpath="bin"
+	<target name="Test">
+		<java classname="edu.umb.cs681.hw01.Test" classpath="bin"
 			failonerror="true" fork="yes" />
 	</target>
 </project>

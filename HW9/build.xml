@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="Homework9">
+
+	<property environment="env" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.8" />
+	<property name="source" value="1.8" />
+
+
+	<property name="main.bin.dir" value="${basedir}\bin" />
+	<property name="main.src.dir" value="${basedir}\src\edu\umb\cs\cs681\hw9" />
+
+
+	<path id="classpath">
+		<pathelement location="${main.bin.dir}" />
+	</path>
+
+	<target name="init">
+		<mkdir dir="${main.bin.dir}" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${main.bin.dir}" />
+	</target>
+
+	<target depends="clean" name="cleanall" />
+	<target depends="clean, build-project,PrimeGenerator,RunnableInterruptiblePrimeGenerator,RunnablePrimeGenerator" name="build" />
+
+	<target depends="init" name="build-project">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="${main.bin.dir}" includeantruntime="false" source="${source}" target="${target}">
+			<src path="src" />
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<target name="PrimeGenerator">
+        <java classname="edu.umb.cs.cs681.hw9.PrimeGenerator" classpath="bin" failonerror="true" fork="yes" />
+	</target>
+    
+	<target name="RunnableInterruptiblePrimeGenerator">
+        <java classname="edu.umb.cs.cs681.hw9.RunnableInterruptiblePrimeGenerator" classpath="bin" failonerror="true" fork="yes" />
+	</target>
+	
+	<target name="RunnablePrimeGenerator">
+        <java classname="edu.umb.cs.cs681.hw9.RunnablePrimeGenerator" classpath="bin" failonerror="true" fork="yes" />
+	</target>
+	
+</project>

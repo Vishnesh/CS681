@@ -1,39 +1,43 @@
 package edu.umb.cs681.hw01;
 
 import java.util.LinkedList;
-import java.util.List;
 
 public abstract class Observable {
-    private List<Observer> observers = new LinkedList<Observer>();
+	protected boolean chn;
+	protected LinkedList<Observer> obs = new LinkedList<Observer>();
 
-    private boolean changed = false;
-    
-    public void addObserver(Observer o) {
-        observers.add(o);
-    }
-      
-    public void deleteObserver(Observer o) {
-        observers.remove(o);
-    }
-    
-    protected void setChanged() {
-        changed = true;
-    }
-    
-    protected void clearChanged() {
-        changed = false;
-    }
-    
-    public boolean hasChanged() {
-        return changed;
-    }
-      
-    public void notifyObservers(Object event) {
-        if (hasChanged()) {
-            for (Observer o : observers) {
-                o.update(this, event);
-            }
-            clearChanged();
-        }
-    }
+	public void addObserver(Observer o) {
+		if (!obs.contains(o)) {
+			obs.add(o);
+		}
+	}
+
+	public void deleteObserver(Observer o) {
+		if (obs.contains(o)) {
+			obs.remove(o);
+		}
+	}
+
+	protected void setChanged() {
+		chn = true;
+	}
+	
+	protected int countObserver() {
+		return obs.size();
+	}
+	
+	protected boolean hasChanged() {
+		return chn;
+	}
+
+	protected void clearChanged() {
+		chn = false;
+	}
+
+	public void notifyObservers(Object object) {
+		if (hasChanged()) {
+			obs.forEach((Observer obs) -> obs.update(this, object));
+			clearChanged();
+		}
+	}
 }

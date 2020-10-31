@@ -2,24 +2,19 @@ package edu.umb.cs681.hw01;
 
 public class StockEvent {
 
-	private String ticker; 
-	private float quote;
-	
-	StockEvent() {
-		System.out.println("StockEvent created");
+	public String t;
+	public float q;
+
+	public StockEvent(String t, float q) {
+		this.t = t;
+		this.q = q;
 	}
-	
-	StockEvent(String ticker, float quote) {
-		System.out.println("StockEvent created");
-		this.ticker = ticker;
-		this.quote = quote;
-	}
-	
+
 	public String getTicker() {
-		return ticker;
+		return t;
 	}
-	
+
 	public float getQuote() {
-		return quote;
+		return q;
 	}
 }
