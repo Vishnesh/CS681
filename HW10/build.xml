@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project basedir="." default="build" name="HW9">
+<project basedir="." default="build" name="HW10">
 	<property environment="env" />
 	<property name="debuglevel" value="source,lines,vars" />
 	<property name="target" value="1.8" />
@@ -17,7 +17,7 @@
 	</target>
 
 	<target depends="clean" name="cleanall" />
-	<target depends="clean, build-project, APFS" name="build" />
+	<target depends="clean, build-project, RunnableCancellableInterruptiblePrimeFactorizer" name="build" />
 	<target depends="init" name="build-project">
 		<echo message="${ant.project.name}: ${ant.file}" />
 		<javac debug="true" debuglevel="${debuglevel}" destdir="bin"
@@ -27,8 +27,8 @@
 		</javac>
 	</target>
 
-	<target name="APFS">
-		<java classname="edu.umb.cs681.hw09.APFS" classpath="bin"
+	<target name="RunnableCancellableInterruptiblePrimeFactorizer">
+		<java classname="edu.umb.cs681.hw10.RunnableCancellableInterruptiblePrimeFactorizer" classpath="bin"
 			failonerror="true" fork="yes" />
 	</target>
 </project>
